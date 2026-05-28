@@ -1,0 +1,31 @@
+.sidebar_conteudo {
+    background-color: rgba(7, 11, 59, 0.97);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 220px;
+    height: 100%;
+    overflow-x: hidden;
+    z-index: 100;
+}
+
+.pagina_conteudo {
+    margin-left: 220px;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+.sidebar_header {
+    justify-content: center;
+    text-align: center;
+
+    & .logo {
+        width: 80%;
+        margin: 10%;
+    }
+
+    & .linha {
+        color: rgba(250, 234, 214, 0.4);
+    }
+}
