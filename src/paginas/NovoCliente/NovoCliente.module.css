@@ -1,0 +1,135 @@
+.pagina_conteudo {
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+
+    & h3 {
+        color: #070b3b;
+        font-size: 1.6rem;
+        margin-bottom: 30px;
+    }
+}
+
+.formulario {
+    background-color: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(6px);
+    border-radius: 12px;
+    padding: 36px;
+    max-width: 560px;
+    box-shadow: 0 2px 12px rgba(7, 11, 59, 0.12);
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    & label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #070b3b;
+        margin-bottom: 6px;
+    }
+
+    & input {
+        padding: 10px 14px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        outline: none;
+        background-color: #fff;
+        transition: border-color 0.2s;
+
+        &:focus {
+            border-color: #070b3b;
+        }
+    }
+}
+
+.acoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.botao_cancelar {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: #f1f1f1;
+    }
+}
+
+.botao_salvar {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    background-color: #f08830;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+
+    &:hover:not(:disabled) {
+        background-color: #d4721e;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+@media (max-width: 600px) {
+    .pagina_conteudo {
+        padding: 20px;
+
+        & h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+    }
+
+    .formulario {
+        padding: 20px;
+    }
+}
+
+& input {
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    background-color: #fff;
+    color: #111;
+    transition: border-color 0.2s;
+
+    &:focus {
+        border-color: #070b3b;
+    }
+}
+
+.botao_cancelar {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    background: #e53935;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: #b71c1c;
+    }
+}
