@@ -1,27 +1,27 @@
-import style from "./Clientes.module.css";
+import style from "./Veiculos.module.css";
 import { Sidebar } from "../../componentes/Sidebar/Sidebar";
 import { Topbar } from "../../componentes/Topbar/Topbar";
 import { Link } from "react-router-dom";
 import { MdEdit, MdDelete } from "react-icons/md";
 import { useEffect, useState } from "react";
-import ClienteAPI from "../../services/clienteAPI";
+import VeiculoAPI from "../../services/veiculoAPI";
 
-export function Clientes() {
-  const [clientes, setClientes] = useState([]);
+export function Veiculos() {
+  const [veiculos, setVeiculos] = useState([]);
   const [mostrarModal, setMostrarModal] = useState(false);
-  const [clienteSelecionado, setClienteSelecionado] = useState(null);
+  const [veiculoSelecionado, setVeiculoSelecionado] = useState(null);
 
-  const handleClickDeletar = (cliente) => {
-    setClienteSelecionado(cliente);
+  const handleClickDeletar = (veiculo) => {
+    setVeiculoSelecionado(veiculo);
     setMostrarModal(true);
   };
 
   const handleDeletar = async () => {
     try {
-      await ClienteAPI.deletarAsync(clienteSelecionado.id);
-      setClientes(clientes.filter((c) => c.id !== clienteSelecionado.id));
+      await VeiculoAPI.deletarAsync(veiculoSelecionado.id);
+      setVeiculos(veiculos.filter((v) => v.id !== veiculoSelecionado.id));
     } catch (error) {
-      console.error("Erro ao deletar cliente:", error);
+      console.error("Erro ao deletar veiculo:", error);
     } finally {
       handleFecharModal();
     }
@@ -29,20 +29,20 @@ export function Clientes() {
 
   const handleFecharModal = () => {
     setMostrarModal(false);
-    setClienteSelecionado(null);
+    setVeiculoSelecionado(null);
   };
 
-  async function carregarClientes() {
+  async function carregarVeiculos() {
     try {
-      const lista = await ClienteAPI.listarAsync(true);
-      setClientes(lista);
+      const lista = await VeiculoAPI.listarAsync(true);
+      setVeiculos(lista);
     } catch (error) {
-      console.error("Erro ao carregar clientes:", error);
+      console.error("Erro ao carregar veiculos:", error);
     }
   }
 
   useEffect(() => {
-    carregarClientes();
+    carregarVeiculos();
   }, []);
 
   return (
@@ -50,9 +50,9 @@ export function Clientes() {
       <Topbar>
         <div className={style.pagina_conteudo}>
           <div className={style.pagina_cabecalho}>
-            <h3>Clientes</h3>
-            <Link to="/cliente/novo" className={style.botao_novo}>
-              + Novo Cliente
+            <h3>Veículos</h3>
+            <Link to="/veiculo/novo" className={style.botao_novo}>
+              + Cadastrar Veículo
             </Link>
           </div>
 
@@ -60,28 +60,32 @@ export function Clientes() {
             <table className={style.tabela}>
               <thead className={style.tabela_cabecalho}>
                 <tr>
-                  <th>Nome</th>
-                  <th>Email</th>
-                  <th>Telefone</th>
+                  <th>Marca</th>
+                  <th>Modelo</th>
+                  <th>Cor</th>
+                  <th>Placa</th>
+                  <th>Km</th>
                   <th>Ações</th>
                 </tr>
               </thead>
               <tbody className={style.tabela_corpo}>
-                {clientes.map((cliente) => (
-                  <tr key={cliente.id}>
-                    <td>{cliente.nome}</td>
-                    <td>{cliente.email}</td>
-                    <td>{cliente.telefone}</td>
+                {veiculos.map((veiculo) => (
+                  <tr key={veiculo.id}>
+                    <td>{veiculo.marca}</td>
+                    <td>{veiculo.modelo}</td>
+                    <td>{veiculo.cor}</td>
+                    <td>{veiculo.placa}</td>
+                    <td>{veiculo.quilometragem}</td>
                     <td>
                       <Link
-                        to="/cliente/editar"
-                        state={cliente.id}
+                        to="/veiculo/editar"
+                        state={veiculo.id}
                         className={style.botao_editar}
                       >
                         <MdEdit />
                       </Link>
                       <button
-                        onClick={() => handleClickDeletar(cliente)}
+                        onClick={() => handleClickDeletar(veiculo)}
                         className={style.botao_deletar}
                       >
                         <MdDelete />
@@ -100,8 +104,8 @@ export function Clientes() {
                   <h5>Confirmar exclusão</h5>
                 </div>
                 <div className={style.modal_body}>
-                  Tem certeza que deseja deletar o cliente{" "}
-                  <strong>{clienteSelecionado?.nome}</strong>?
+                  Tem certeza que deseja deletar o veículo{" "}
+                  <strong>{veiculoSelecionado?.marca} {veiculoSelecionado?.modelo}</strong>?
                 </div>
                 <div className={style.modal_footer}>
                   <button className={style.botao_cancelar} onClick={handleFecharModal}>
