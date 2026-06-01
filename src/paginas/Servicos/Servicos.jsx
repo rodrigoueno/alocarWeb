@@ -71,7 +71,6 @@ export function Servicos() {
 
   return (
     <Sidebar>
-      <Topbar>
         <div className={style.pagina_conteudo}>
           <div className={style.pagina_cabecalho}>
             <h3>Serviços</h3>
@@ -147,7 +146,6 @@ export function Servicos() {
             </div>
           )}
         </div>
-      </Topbar>
     </Sidebar>
   );
 }

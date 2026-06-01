@@ -56,7 +56,6 @@ export function EditarVeiculo() {
 
   return (
     <Sidebar>
-      <Topbar>
         <div className={style.pagina_conteudo}>
           <h3>Editar Veículo</h3>
 
@@ -167,7 +166,6 @@ export function EditarVeiculo() {
             </div>
           </form>
         </div>
-      </Topbar>
     </Sidebar>
   );
 }

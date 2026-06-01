@@ -145,6 +145,7 @@
     border-radius: 8px;
     border: 1px solid #ccc;
     background: #fff;
+    color: #212529;
     cursor: pointer;
     font-size: 0.9rem;
     transition: background-color 0.2s;
