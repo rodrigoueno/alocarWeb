@@ -8,7 +8,7 @@ export function Home() {
       <Sidebar>
         <Topbar>
           <div className={style.pagina_conteudo}>
-            <h3>Home</h3>
+            <h3>Inicio</h3>
           </div>
         </Topbar>
       </Sidebar>
