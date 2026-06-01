@@ -48,7 +48,6 @@ export function EditarCliente() {
 
   return (
     <Sidebar>
-      <Topbar>
         <div className={style.pagina_conteudo}>
           <h3>Editar Cliente</h3>
 
@@ -115,7 +114,6 @@ export function EditarCliente() {
             </div>
           </form>
         </div>
-      </Topbar>
     </Sidebar>
   );
 }

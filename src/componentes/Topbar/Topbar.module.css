@@ -2,13 +2,14 @@
     background-color: #f1f1f1;
     position: fixed;
     top: 0;
-    right: 0;
-    width: 80%;
+    width: calc(100% - 260px); /* era 80% */
+    left: 260px; /* adicionar — garante encosto perfeito */
+    right: unset; /* remover o right: 0 */
     height: 10vh;
     display: flex;
     justify-content: flex-end;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.445);
-    z-index: 100;
+    z-index: 150;
 }
 
 .pagina_conteudo {

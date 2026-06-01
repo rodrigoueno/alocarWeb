@@ -47,7 +47,6 @@ export function Veiculos() {
 
   return (
     <Sidebar>
-      <Topbar>
         <div className={style.pagina_conteudo}>
           <div className={style.pagina_cabecalho}>
             <h3>Veículos</h3>
@@ -119,7 +118,6 @@ export function Veiculos() {
             </div>
           )}
         </div>
-      </Topbar>
     </Sidebar>
   );
 }

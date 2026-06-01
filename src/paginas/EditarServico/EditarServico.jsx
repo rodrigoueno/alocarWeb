@@ -100,7 +100,6 @@ export function EditarServico() {
 
   return (
     <Sidebar>
-      <Topbar>
         <div className={style.pagina_conteudo}>
           <h3>Editar Serviço</h3>
 
@@ -190,7 +189,6 @@ export function EditarServico() {
             </div>
           </form>
         </div>
-      </Topbar>
     </Sidebar>
   );
 }
