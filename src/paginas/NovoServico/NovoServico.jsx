@@ -36,9 +36,9 @@ const TIPOS_SERVICO = [
 ];
 
 const PRIORIDADE_STYLE = {
-  Alta:  { background: "#ffebee", color: "#c62828" },
-  Média: { background: "#fff8e1", color: "#f57f17" },
-  Baixa: { background: "#e8f5e9", color: "#2e7d32" },
+  Alta:  { background: "#fafafa", color: "#e90b0b" },
+  Média: { background: "#fafafa", color: "#ee8727" },
+  Baixa: { background: "#fafafa", color: "#0a8128" },
 };
 
 function dataHojeLocal() {
@@ -65,14 +65,14 @@ export function NovoServico() {
     TIPOS_SERVICO.map((t) => ({ tipoServico: t.value, label: t.label, selecionado: false, valor: "" }))
   );
 
-  // Carrega clientes ativos
+  // Clientes ativos.
   useEffect(() => {
     ClienteAPI.listarAsync(true)
       .then(setClientes)
       .catch((err) => console.error("Erro ao carregar clientes:", err));
   }, []);
 
-  // Carrega veículos do cliente selecionado
+  // Relação cliente selecionado e veículos.
   useEffect(() => {
     if (!clienteId) {
       setVeiculos([]);
@@ -87,7 +87,7 @@ export function NovoServico() {
     setSugestoes(null);
   }, [clienteId]);
 
-  // Ao selecionar veículo: preenche KM e busca sugestões
+  // Preenche KM e busca sugestões automáticamente sempre que o campo é atualizado.
   useEffect(() => {
   if (!veiculoId) {
     setSugestoes(null);
@@ -171,7 +171,7 @@ useEffect(() => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isFormValid()) {
-      alert("Preencha todos os campos obrigatórios e adicione ao menos um item com valor maior que zero.");
+      alert("Preencha todos os campos obrigatórios e adicione ao menos um serviço e seu valor estimado.");
       return;
     }
     try {
@@ -195,15 +195,13 @@ useEffect(() => {
   return (
     <Sidebar>
         <div className={style.pagina_conteudo}>
-          <h3>Novo Serviço</h3>
+          <h3>Registro de Serviço</h3>
 
           <div className={style.layout}>
-            {/* ── Formulário ── */}
             <form onSubmit={handleSubmit} className={style.formulario}>
 
-              {/* Cliente */}
               <div className={style.campo}>
-                <label>Cliente *</label>
+                <label>Cliente</label>
                 <select value={clienteId} onChange={(e) => setClienteId(e.target.value)} required>
                   <option value="">Selecione um cliente</option>
                   {clientes.map((c) => (
@@ -214,9 +212,8 @@ useEffect(() => {
                 </select>
               </div>
 
-              {/* Veículo */}
               <div className={style.campo}>
-                <label>Veículo *</label>
+                <label>Veículo</label>
                 <select
                   value={veiculoId}
                   onChange={(e) => setVeiculoId(e.target.value)}
@@ -234,10 +231,9 @@ useEffect(() => {
                 </select>
               </div>
 
-              {/* Data + Quilometragem */}
               <div className={style.linha}>
-                <div className={style.campo}>
-                  <label>Data de Agendamento *</label>
+                <div className={`${style.campo} ${style.campo_data}`}>
+                  <label>Data de Agendamento</label>
                   <input
                     type="datetime-local"
                     value={dataAgendamento}
@@ -246,8 +242,8 @@ useEffect(() => {
                   />
                 </div>
 
-                <div className={style.campo}>
-                  <label>Quilometragem Atual (km) *</label>
+                <div className={`${style.campo} ${style.campo_km}`}>
+                  <label>Quilometragem Atual</label>
                   <input
                     type="number"
                     min="0"
@@ -259,10 +255,9 @@ useEffect(() => {
                 </div>
               </div>
 
-              {/* Observação */}
               <div className={style.campo}>
                 <label>
-                  Observação
+                  Observações *
                   <span className={style.contador}>{observacao.length}/500</span>
                 </label>
                 <textarea
@@ -273,9 +268,8 @@ useEffect(() => {
                 />
               </div>
 
-              {/* Itens */}
               <p className={style.secao_titulo}>
-                Itens do Serviço *{" "}
+                Serviços
                 {itensSelecionados.length > 0 &&
                   `(${itensSelecionados.length} selecionado${itensSelecionados.length > 1 ? "s" : ""})`}
               </p>
@@ -319,9 +313,8 @@ useEffect(() => {
               </div>
             </form>
 
-            {/* ── Painel de Sugestões da IA ── */}
             <div className={style.sugestoes_painel}>
-              <p className={style.secao_titulo}>Sugestões do Thiaguinho CDF</p>
+              <p className={style.secao_titulo}>🔧 Sugestões do Thiaguinho CDF 🖥️</p>
 
               {!veiculoId && (
                 <p className={style.sugestoes_vazio}>
@@ -357,7 +350,7 @@ useEffect(() => {
 
                   {sugestoes.previsaoProximoRetorno && (
                     <div className={style.previsao_retorno}>
-                      🔁 <strong>Próximo retorno:</strong> {sugestoes.previsaoProximoRetorno}
+                      <strong>Próximo retorno:</strong> {sugestoes.previsaoProximoRetorno}
                     </div>
                   )}
                 </>

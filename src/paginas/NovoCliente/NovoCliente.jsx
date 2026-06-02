@@ -31,7 +31,7 @@ export function NovoCliente() {
   return (
     <Sidebar>
         <div className={style.pagina_conteudo}>
-          <h3>Novo Cliente</h3>
+          <h3>Cadastro de Cliente</h3>
 
           <form onSubmit={handleSubmit} className={style.formulario}>
             <div className={style.campo}>

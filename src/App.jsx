@@ -17,17 +17,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
 
-        {/* Clientes */}
         <Route path="/clientes" element={<Clientes />} />
         <Route path="/cliente/novo" element={<NovoCliente />} />
         <Route path="/cliente/editar" element={<EditarCliente />} />
 
-        {/* Veículos */}
         <Route path="/veiculos" element={<Veiculos />} />
         <Route path="/veiculo/novo" element={<NovoVeiculo />} />
         <Route path="/veiculo/editar" element={<EditarVeiculo />} />
 
-        {/* Serviços */}
         <Route path="/servicos" element={<Servicos />} />
         <Route path="/servico/novo" element={<NovoServico />} />
         <Route path="/servico/editar" element={<EditarServico />} />

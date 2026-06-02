@@ -71,10 +71,9 @@ export function Home() {
   const clientes = useMemo(() => {
     const mapa = new Map();
     servicos.forEach((s) => {
-      if (s.clienteId && s.nomeCliente) {
-        mapa.set(s.clienteId, s.nomeCliente);
-      }
-    });
+      if (s.nomeCliente) {
+      mapa.set(s.id, s.nomeCliente);
+    }});
     return Array.from(mapa.entries()).map(([id, nome]) => ({ id, nome }));
   }, [servicos]);
 
@@ -83,19 +82,16 @@ export function Home() {
     let lista = [...servicos];
 
     if (clienteSelecionado) {
-      // Filtro por cliente: mostra todos os agendamentos do cliente, sem filtro de data
-      lista = lista.filter(
-        (s) => String(s.clienteId) === String(clienteSelecionado)
-      );
+    lista = lista.filter(
+      (s) => String(s.id) === String(clienteSelecionado)
+    );
     } else if (filtroAtivos) {
-      // Filtro situação ativa: Agendado (1) + Em Andamento (2), sem filtro de data
       lista = lista.filter((s) => s.situacao === 1 || s.situacao === 2);
     } else {
-      // Padrão: somente serviços do dia atual
       lista = lista.filter((s) => ehHoje(s.dataAgendamento));
     }
 
-    // Ordena por horário de agendamento
+
     lista.sort(
       (a, b) =>
         new Date(a.dataAgendamento) - new Date(b.dataAgendamento)
@@ -129,7 +125,7 @@ export function Home() {
       <Sidebar>
         <div className={style.topbar}>
           <div className={style.topbar_titulo}>
-            <span>AlouCar</span>
+            <span>Transformamos desafios em soluções</span>
           </div>
           <div className={style.topbar_filtros}>
             <select
@@ -178,7 +174,7 @@ export function Home() {
 
           {!carregando && !erro && servicosFiltrados.length === 0 && (
             <div className={style.estado_msg}>
-              Nenhum serviço encontrado para os filtros selecionados.
+              Nenhum serviço encontrado.
             </div>
           )}
 

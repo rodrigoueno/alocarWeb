@@ -51,7 +51,7 @@ export function Veiculos() {
           <div className={style.pagina_cabecalho}>
             <h3>Veículos</h3>
             <Link to="/veiculo/novo" className={style.botao_novo}>
-              + Cadastrar Veículo
+              Cadastrar Veículo
             </Link>
           </div>
 

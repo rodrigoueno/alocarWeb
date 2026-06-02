@@ -3,7 +3,6 @@
     height: 100%;
 }
 
-/* ── Topbar ── */
 .topbar {
     background-color: #f1f1f1;
     position: fixed;
@@ -20,20 +19,12 @@
     z-index: 150;
 }
 
-/* Logo */
-.logo_icon {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    width: 240px;
+.topbar_titulo span {
+    color: #070b3b;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
-.logo_svg {
-    width: 240px;
-    height: auto;
-}
-
-/* Filtros — centralizados com flex: 1 e justify-content center */
 .topbar_filtros {
     display: flex;
     align-items: center;
@@ -41,12 +32,6 @@
     gap: 12px;
     flex: 1;
     flex-wrap: wrap;
-}
-
-/* Espaço direito — mesmo tamanho do logo para equilibrar */
-.topbar_direita {
-    width: 240px;
-    flex-shrink: 0;
 }
 
 .filtro_select {
@@ -129,7 +114,6 @@
     text-transform: capitalize;
 }
 
-/* ── Tabela ── */
 .tabela_container {
     width: 100%;
     overflow-x: auto;

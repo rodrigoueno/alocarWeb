@@ -19,14 +19,24 @@ const VeiculoAPI = {
     return await response.json();
   },
 
-  async criarAsync(marca, modelo, cor, placa, anoFabricacao, anoModelo, quilometragem, tipo) {
-    const response = await fetch(`${URLReferencia}/Criar`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ marca, modelo, cor, placa, anoFabricacao, anoModelo, quilometragem, tipo }),
-    });
-    if (!response.ok) throw new Error("Erro ao criar veiculo");
-    return await response.json();
+  async criarAsync(clienteId, marca, modelo, cor, placa, anoFabricacao, anoModelo, quilometragem, tipo) {
+      const response = await fetch(`${URLReferencia}/Criar`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          clienteId: Number(clienteId),
+          marca,
+          modelo,
+          cor,
+          placa,
+          anoFabricacao: Number(anoFabricacao),
+          anoModelo: Number(anoModelo),
+          quilometragem: Number(quilometragem),
+          tipo: Number(tipo)
+        }),
+      });
+      if (!response.ok) throw new Error("Erro ao criar veiculo");
+      return await response.json();
   },
 
   async atualizarAsync(id, marca, modelo, cor, placa, anoFabricacao, anoModelo, quilometragem, tipo) {

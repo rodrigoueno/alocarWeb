@@ -75,7 +75,7 @@ export function Servicos() {
           <div className={style.pagina_cabecalho}>
             <h3>Serviços</h3>
             <Link to="/servico/novo" className={style.botao_novo}>
-              + Novo Serviço
+              Cadastrar Serviço
             </Link>
           </div>
 

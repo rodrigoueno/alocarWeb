@@ -51,7 +51,7 @@ export function Clientes() {
           <div className={style.pagina_cabecalho}>
             <h3>Clientes</h3>
             <Link to="/cliente/novo" className={style.botao_novo}>
-              + Novo Cliente
+              Cadastrar Cliente
             </Link>
           </div>
 
