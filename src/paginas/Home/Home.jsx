@@ -48,7 +48,7 @@ export function Home() {
 
   // Filtros
   const [clienteSelecionado, setClienteSelecionado] = useState("");
-  const [filtroAtivos, setFiltroAtivos] = useState(false); // Agendado + Em andamento
+  const [filtroAtivos, setFiltroAtivos] = useState(false);
 
   useEffect(() => {
     async function carregarServicos() {
@@ -67,7 +67,7 @@ export function Home() {
     carregarServicos();
   }, []);
 
-  // Extrai clientes únicos da lista de serviços
+  // Pesquisa todos serviços de um cliente.
   const clientes = useMemo(() => {
     const mapa = new Map();
     servicos.forEach((s) => {
@@ -77,7 +77,7 @@ export function Home() {
     return Array.from(mapa.entries()).map(([id, nome]) => ({ id, nome }));
   }, [servicos]);
 
-  // Serviços filtrados
+  // Lista serviço Agendados e Em Andamento.
   const servicosFiltrados = useMemo(() => {
     let lista = [...servicos];
 
@@ -125,7 +125,7 @@ export function Home() {
       <Sidebar>
         <div className={style.topbar}>
           <div className={style.topbar_titulo}>
-            <span>Transformamos desafios em soluções</span>
+            <span>A solução certa para o seu veículo</span>
           </div>
           <div className={style.topbar_filtros}>
             <select
