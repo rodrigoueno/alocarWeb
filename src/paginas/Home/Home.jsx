@@ -77,7 +77,7 @@ export function Home() {
     return Array.from(mapa.entries()).map(([id, nome]) => ({ id, nome }));
   }, [servicos]);
 
-  // Lista serviço Agendados e Em Andamento.
+  // Lista serviços Agendados e Em Andamento.
   const servicosFiltrados = useMemo(() => {
     let lista = [...servicos];
 
